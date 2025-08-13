@@ -12,7 +12,7 @@ export class Artist {
   @Column()
   country: string;
 
-  @Column()
+  @Column({ nullable: true })
   debut_year: number;
 
   @OneToMany(() => Album, (album) => album.artist)
