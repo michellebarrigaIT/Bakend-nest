@@ -96,3 +96,22 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+
+## Requirements
+CRUD: (GET, GET by Id, POST, PUT, PATCH, DELETE) 
+
+Artists CRUD
+Álbum CRUD
+Song CRUD
+Genre CRUD
+Get all the albums by an specific artist
+Get all songs with filters options
+Filter songs by genre (genre name)
+Get songs from a specific album
+Get all songs from a specific artist
+Get list of songs with pagination
+Get list of songs of a specific artist with pagination
+Search songs by release year
+Unit tests
+API DOCS - Ex: Swagger (OPTIONAL)
+

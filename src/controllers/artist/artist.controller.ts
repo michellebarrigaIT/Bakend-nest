@@ -37,7 +37,7 @@ export class ArtistController {
     @Put(':id')
     async update(
         @Param('id', ParseIntPipe) id: number, 
-        @Body() artistData: UpdateArtistDto
+        @Body() artistData: CreateArtistDto
     ) {
         const updated = await this.artistService.updateAll(id, artistData);
         if (!updated) {
