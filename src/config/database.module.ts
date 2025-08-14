@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 import { Album } from 'src/database/entities/album.entity';
 import { Artist } from 'src/database/entities/artist.entity';
 import { Genre } from 'src/database/entities/genre.entity';
@@ -9,20 +10,21 @@ import { ArtistModule } from 'src/modules/artist/artist.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'postgres',
-      password: 'password',
-      database: 'song-library',
+      host: process.env.DB_HOST || 'localhost',
+      port: parseInt(process.env.DB_PORT || '5433', 10),
+      username: process.env.POSTGRES_USER || 'postgres',
+      password: (process.env.DB_PASSWORD || 'password').trim(),
+      database: (process.env.POSTGRES_DB || 'song-library').trim(),
       entities: [
         Artist,
         Song,
         Album,
         Genre,
         GenreSong,
-    ],
+      ],
       synchronize: true,
     }),
     ArtistModule,
