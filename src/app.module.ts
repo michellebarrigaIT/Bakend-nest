@@ -6,10 +6,12 @@ import { ArtistService } from './services/artist/artist.service';
 import { ArtistController } from './controllers/artist/artist.controller';
 import { ArtistModule } from './modules/artist/artist.module';
 import { SongService } from './services/song/song.service';
+import { SongController } from './controllers/song/song.controller';
+import { SongModule } from './modules/song/song.module';
 
 @Module({
-  imports: [DatabaseModule, ArtistModule],
+  imports: [DatabaseModule, ArtistModule, SongModule],
   controllers: [AppController],
-  providers: [AppService, SongService],
+  providers: [AppService],
 })
 export class AppModule {}
