@@ -12,7 +12,7 @@ export class ArtistController {
     return this.artistService.createTestSong();
   }
 
-    @Get('/getAll')
+    @Get('/')
     async findAll() {
         return this.artistService.findAll();
     }
