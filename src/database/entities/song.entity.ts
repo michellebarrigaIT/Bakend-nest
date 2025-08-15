@@ -17,7 +17,7 @@ export class Song {
   @Column()
   title: string;
 
-  @Column()
+  @Column('decimal', { precision: 5, scale: 2 })
   duration: number;
 
   @ManyToOne(() => Album, (album) => album.songs, { onDelete: 'CASCADE' })

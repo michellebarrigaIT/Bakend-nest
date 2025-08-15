@@ -4,6 +4,7 @@ import {
   Delete,
   Get,
   HttpCode,
+  HttpException,
   HttpStatus,
   NotFoundException,
   Param,
@@ -25,7 +26,13 @@ export class SongController {
 
   @Get('/')
   async findAll() {
-    return this.songService.findAll();
+    const songs = await this.songService.findAll();
+    
+    if (!songs || songs.length === 0) {
+      throw new HttpException('', HttpStatus.NO_CONTENT);
+    }
+    
+    return songs;
   }
 
   @Get(':id')
@@ -71,9 +78,9 @@ export class SongController {
     @Body() songData: UpdateSongValidator
   ) {
     const dto = new SongDto(
-      songData.title ?? '',
-      songData.duration ?? 0,
-      songData.albumId ?? 0
+      songData.title,
+      songData.duration,
+      songData.albumId 
     );
     const updated = await this.songService.update(id, dto);
     if (!updated) {

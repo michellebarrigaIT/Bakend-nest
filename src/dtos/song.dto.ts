@@ -1,17 +1,17 @@
 export class SongDto {
     private id?: number;
-    private title: string;
-    private duration: number;
-    private albumId: number;
+    private title?: string;
+    private duration?: number;
+    private albumId?: number;
 
-    constructor( title: string, duration: number, albumId: number, id?: number,) {
+    constructor( title?: string, duration?: number, albumId?: number, id?: number,) {
         this.id = id;
         this.title = title;
         this.duration = duration;
         this.albumId = albumId;
     }
 
-    getAlbumId(): number {
+    getAlbumId(): number | undefined{
         return this.albumId;
     }
 
@@ -19,7 +19,7 @@ export class SongDto {
         this.albumId = albumId;
     }
 
-    getTitle(): string {
+    getTitle(): string | undefined{
         return this.title;
     }
 
@@ -27,7 +27,7 @@ export class SongDto {
         this.title = title;
     }
 
-    getDuration(): number {
+    getDuration(): number | undefined{
         return this.duration;
     }
 

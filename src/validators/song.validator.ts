@@ -1,12 +1,12 @@
 import { from } from "form-data";
-import { IsInt, IsNotEmpty, IsOptional, IsString, Min } from "class-validator";
+import { IsInt, IsNotEmpty, IsNumber, IsOptional, IsString, Min } from "class-validator";
 
 export class CreateSongValidator {
   @IsString()
   @IsNotEmpty()
   title: string;
 
-  @IsInt()
+  @IsNumber({ allowNaN: false, allowInfinity: false }, { message: 'duration must be a number' })
   @IsNotEmpty()
   @Min(0)
   duration: number;
@@ -22,7 +22,8 @@ export class UpdateSongValidator {
     title?: string;
 
     @IsOptional()
-    @IsInt()
+    @IsNumber({ allowNaN: false, allowInfinity: false }, { message: 'duration must be a number' })
+    @IsNotEmpty()
     @Min(0)
     duration?: number;
 
