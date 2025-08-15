@@ -44,7 +44,8 @@ export class GenreController {
     ) {
         const dto = new GenreDto(
             genreData.name,
-            genreData.description ?? ''
+            genreData.description ?? '',
+            id
         );
         return this.genreService.update(id, dto);
     }
@@ -55,8 +56,9 @@ export class GenreController {
         @Body() genreData: UpdateGenreValidator
     ) {
         const dto = new GenreDto(
-            genreData.name ?? '',
-            genreData.description ?? ''
+            genreData.name,
+            genreData.description,
+            id
         );
         return this.genreService.update(id, dto);
     }   
