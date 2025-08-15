@@ -30,7 +30,7 @@ export class AlbumService {
         const saved = await this.albumRepository.save(album);
         if (!saved) return null;
 
-        const found = await this.albumRepository.findOne({ where: { id: saved.id }, relations: ['album'] });
+        const found = await this.albumRepository.findOne({ where: { id: saved.id } });
         return found ? toAlbumDto(found) : null;
     }
 

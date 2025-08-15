@@ -1,13 +1,14 @@
-import { IsInt, IsNotEmpty, IsOptional, IsString, Min } from "class-validator";
-
+import { IsDate, IsInt, IsNotEmpty, IsOptional, IsString, MaxDate, Min, MinDate } from "class-validator";
+import { Type, Transform } from 'class-transformer';
 export class CreateAlbumValidator {
   @IsString()
   @IsNotEmpty()
   title: string;
 
-  @IsInt()
-  @IsNotEmpty()
-  @Min(1800)
+  @IsDate()
+  @Type(() => Date)
+  @MinDate(new Date('1800-01-01'))
+  @MaxDate(new Date())
   releaseDate: Date;
 
   @IsInt()
@@ -21,9 +22,11 @@ export class UpdateAlbumValidator {
   title?: string;
 
   @IsOptional()
-  @IsInt()
-  @Min(0)
-  releaseDate?: Date;
+  @IsDate()
+  @Type(() => Date)
+  @MinDate(new Date('1800-01-01'))
+  @MaxDate(new Date())
+  releaseDate: Date;
 
   @IsOptional()
   @IsInt()

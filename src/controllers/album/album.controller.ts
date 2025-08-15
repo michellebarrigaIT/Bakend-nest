@@ -64,7 +64,9 @@ export class AlbumController {
         const dto = new AlbumDto(
             albumData.title,
             albumData.releaseDate,
-            albumData.artistId ?? 0
+            albumData.artistId ?? 0,
+            undefined,
+            id
         );
         return this.albumService.update(id, dto);
     }
@@ -78,7 +80,8 @@ export class AlbumController {
             albumData.title,
             albumData.releaseDate,
             albumData.artistId,
-            albumData.songs
+            albumData.songs,
+            id
         );
         return this.albumService.update(id, dto);
     }   
